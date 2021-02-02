@@ -24,6 +24,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map.Entry;
 
 /**
  *
@@ -75,6 +76,12 @@ public abstract class MMSCBase implements MMSC {
 					conn.setRequestProperty("Authorization", "Basic " + buffer.toString("iso-8859-1"));
 				} catch (IOException ioe) {
 					throw new RuntimeException("Failed to add HTTP Basic Authorization header", ioe);
+				}
+			}
+			
+			if(ctx.getHttpHeaders() != null && !ctx.getHttpHeaders().isEmpty()){
+				for(Entry<String, String> headerEntry : ctx.getHttpHeaders().entrySet()){
+					conn.setRequestProperty(headerEntry.getKey(), headerEntry.getValue());
 				}
 			}
 

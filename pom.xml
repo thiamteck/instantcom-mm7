@@ -4,7 +4,7 @@
 	<groupId>net.instantcom.mm7</groupId>
 	<artifactId>instantcom-mm7</artifactId>
 	<name>InstantCom MM7 Client</name>
-	<version>0.9.3</version>
+	<version>0.9.5-SNAPSHOT</version>
 	<description>InstantCom MMS MM7 protocol client implementation</description>
 	<packaging>jar</packaging>
 	<url>https://github.com/vnesek/instantcom-mm7</url>
@@ -123,10 +123,22 @@
 	</build>
 
 	<distributionManagement>
+		<!-- 
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-		</snapshotRepository>		
+		</snapshotRepository>
+		 -->
+		<repository>
+	      <id>nexus-release</id>
+	      <name>Internal Release</name>
+	      <url>http://vas-dev:8888/nexus/content/repositories/releases</url>
+	    </repository>
+	    <snapshotRepository>
+	      <id>nexus-snapshot</id>
+	      <name>Internal Snapshot</name>
+	      <url>http://vas-dev:8888/nexus/content/repositories/snapshots</url>
+	    </snapshotRepository>		
 	</distributionManagement>
 
 	<profiles>

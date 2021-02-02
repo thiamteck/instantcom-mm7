@@ -21,6 +21,8 @@ package net.instantcom.mm7;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.lang.reflect.Constructor;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.jdom2.output.Format;
 import org.jvnet.mimepull.MIMEConfig;
@@ -160,6 +162,14 @@ public class MM7Context {
 		this.username = username;
 	}
 
+	public Map<String, String> getHttpHeaders() {
+		return httpHeaders;
+	}
+
+	public void setHttpHeaders(Map<String, String> httpHeaders) {
+		this.httpHeaders = httpHeaders;
+	}
+
 	@SuppressWarnings("unchecked")
 	private void initializeBase64OutputStream() {
 		for (String className : BASE64_OUTPUT_STREAM_CLASSES) {
@@ -182,4 +192,6 @@ public class MM7Context {
 	private boolean useFirstContentFoundIfHrefIsInvalid = true;
 	private String userAgent = "InstantCom-MM7/" + About.VERSION;
 	private String username;
+	
+	private Map<String, String> httpHeaders = new HashMap<String, String>();
 }
